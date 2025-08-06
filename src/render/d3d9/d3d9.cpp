@@ -297,10 +297,15 @@ SK_LazyGlobal <RenderTargetTracker> SK::D3D9::tracked_rt;
 SK_LazyGlobal <DrawState>           SK::D3D9::draw_state;
 SK_LazyGlobal <FrameState>          SK::D3D9::last_frame;
 
-bool g_bFreezeShaders = false;
-bool savedFrozenShaders = false;
-std::vector<uint32_t> frozenShaders;
-std::vector<std::string> frozenContents;
+bool g_bFreezePixelShaders = false;
+bool savedFrozenPixelShaders = false;
+std::vector<uint32_t> frozenPixelShaders;
+std::vector<std::string> frozenPixelContents;
+
+bool g_bFreezeVertexShaders = false;
+bool savedFrozenVertexShaders = false;
+std::vector<uint32_t> frozenVertexShaders;
+std::vector<std::string> frozenVertexContents;
 
 void
 SK::D3D9::VertexBufferTracker::clear (void)
@@ -7143,21 +7148,41 @@ SK_D3D9_LiveShaderClassView (SK::D3D9::ShaderClass shader_type, bool& can_scroll
   const char*
     szShaderWord =  shader_type == SK::D3D9::ShaderClass::Pixel ? "Pixel" :
                                                                   "Vertex";
-  //save shaders if checked
-  if (g_bFreezeShaders && !savedFrozenShaders) {
-    frozenShaders = shaders;
-    frozenContents = list->contents;
-    savedFrozenShaders = true;
+  if (shader_type == SK::D3D9::ShaderClass::Pixel) {
+    //save shaders if checked
+    if (g_bFreezePixelShaders && !savedFrozenPixelShaders) {
+      frozenPixelShaders = shaders;
+      frozenPixelContents = list->contents;
+      savedFrozenPixelShaders = true;
+    }
+    //overwrite "live" shaders if checked & there's a save
+    if (g_bFreezePixelShaders && savedFrozenPixelShaders) {
+      shaders = frozenPixelShaders;
+      list->contents = frozenPixelContents;
+    }
+    //clear save if unchecked
+    if (!g_bFreezePixelShaders) {
+      savedFrozenPixelShaders = false;
+    }
   }
-  //overwrite "live" shaders if checked & there's a save
-  if (g_bFreezeShaders && savedFrozenShaders) {
-    shaders = frozenShaders;
-    list->contents = frozenContents;
+  else {
+    //save shaders if checked
+    if (g_bFreezeVertexShaders && !savedFrozenVertexShaders) {
+      frozenVertexShaders = shaders;
+      frozenVertexContents = list->contents;
+      savedFrozenVertexShaders = true;
+    }
+    //overwrite "live" shaders if checked & there's a save
+    if (g_bFreezeVertexShaders && savedFrozenVertexShaders) {
+      shaders = frozenVertexShaders;
+      list->contents = frozenVertexContents;
+    }
+    //clear save if unchecked
+    if (!g_bFreezeVertexShaders) {
+      savedFrozenVertexShaders = false;
+    }
   }
-  //clear save if unchecked
-  if (!g_bFreezeShaders) {
-    savedFrozenShaders = false;
-  }
+
 
   if (list->dirty)
   {
@@ -7285,7 +7310,13 @@ SK_D3D9_LiveShaderClassView (SK::D3D9::ShaderClass shader_type, bool& can_scroll
     ImGui::Checkbox ( shader_type == SK::D3D9::ShaderClass::Pixel ? "Cancel Draws Using Selected Pixel Shader" :
                                                                     "Cancel Draws Using Selected Vertex Shader",
                         &tracker->cancel_draws );  ImGui::SameLine ();
-    ImGui::Checkbox("Freeze shaders", &g_bFreezeShaders);
+    if (shader_type == SK::D3D9::ShaderClass::Pixel) {
+      ImGui::Checkbox("Freeze Pixel shaders", &g_bFreezePixelShaders);
+    }
+    else {
+      ImGui::Checkbox("Freeze Vertex shaders", &g_bFreezeVertexShaders);
+    }
+    
     LONG num_draws =
      ReadAcquire (&tracker->num_draws);
 
