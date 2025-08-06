@@ -6963,8 +6963,8 @@ SK_D3D9_DrawFileList (bool& can_scroll)
 
         if (sel_changed)
         {
-          ImGui::SetScrollHereY       (0.5f); // 0.0f:top, 0.5f:center, 1.0f:bottom
-          ImGui::SetKeyboardFocusHere (    );
+          //ImGui::SetScrollHereY       (0.5f); // 0.0f:top, 0.5f:center, 1.0f:bottom
+          //ImGui::SetKeyboardFocusHere (    );
 
           sel_changed = false;
         }
@@ -7223,8 +7223,8 @@ SK_D3D9_LiveShaderClassView (SK::D3D9::ShaderClass shader_type, bool& can_scroll
 
         if (sel_changed)
         {
-          ImGui::SetScrollHereY       (0.5f);
-          ImGui::SetKeyboardFocusHere (    );
+          //ImGui::SetScrollHereY       (0.5f);
+          //ImGui::SetKeyboardFocusHere (    );
 
           sel_changed     = false;
           list->last_sel  = (uint32_t)shaders [list->sel];
@@ -7651,7 +7651,7 @@ SK_LiveVertexStreamView (bool& can_scroll)
 
         if (sel_changed)
         {
-          ImGui::SetScrollHereY (0.5f);
+          //ImGui::SetScrollHereY (0.5f);
 
           sel_changed            = false;
           list->last_sel         = (uintptr_t)buffers [list->sel];
@@ -8264,7 +8264,7 @@ SK_D3D9_TextureModDlg (void)
     
           if (sel_changed)
           {
-            ImGui::SetScrollHereY (0.5f); // 0.0f:top, 0.5f:center, 1.0f:bottom
+            //ImGui::SetScrollHereY (0.5f); // 0.0f:top, 0.5f:center, 1.0f:bottom
             sel_changed = false;
           }
         }
@@ -8673,8 +8673,8 @@ SK_D3D9_TextureModDlg (void)
       
               if (sel_changed)
               {
-                ImGui::SetScrollHereY (0.5f); // 0.0f:top, 0.5f:center, 1.0f:bottom
-                ImGui::SetKeyboardFocusHere ( );
+                //ImGui::SetScrollHereY (0.5f); // 0.0f:top, 0.5f:center, 1.0f:bottom
+                //ImGui::SetKeyboardFocusHere ( );
       
                 sel_changed = false;
               }
