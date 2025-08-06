@@ -3,6 +3,12 @@
 <a href="https://discord.gg/SpecialK"><img alt="Discord" src="https://img.shields.io/discord/778539700981071872?logo=discord&label=Discord"></a>
 </p>
 
+Custom reimplementation of Special K adapted for ArcheAge.
+
+Original project copyright © Kaldaien.
+
+Forked and later fully seperated from https://github.com/Kaldaien/SpecialK 
+
 Special K&nbsp;&nbsp;<sub>*"Lovingly referred to as the Swiss Army Knife of PC gaming, Special K does a bit of everything. It is best known for fixing and enhancing graphics, its many detailed performance analysis and correction mods, and a constantly growing palette of tools that solve a wide variety of issues affecting PC games."*</sub>
 
 <p align="right"><img src="https://img.shields.io/github/license/SpecialKO/SpecialK" alt="License">
