@@ -827,7 +827,7 @@ SK_ImGui_ControlPanelTitle (void)
     title += SK_WideCharToUTF8 (SK_GetPluginName ());
   else
   {
-    title += "Strawberry Flavored Special K  (v ";
+    title += "Strawberry Special K  (v ";
     title += SK_GetVersionStrA ();
     title += ")";
   }
