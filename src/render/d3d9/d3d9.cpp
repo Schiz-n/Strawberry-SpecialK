@@ -297,6 +297,11 @@ SK_LazyGlobal <RenderTargetTracker> SK::D3D9::tracked_rt;
 SK_LazyGlobal <DrawState>           SK::D3D9::draw_state;
 SK_LazyGlobal <FrameState>          SK::D3D9::last_frame;
 
+bool g_bFreezeShaders = false;
+bool savedFrozenShaders = false;
+std::vector<uint32_t> frozenShaders;
+std::vector<std::string> frozenContents;
+
 void
 SK::D3D9::VertexBufferTracker::clear (void)
 {
@@ -7138,6 +7143,21 @@ SK_D3D9_LiveShaderClassView (SK::D3D9::ShaderClass shader_type, bool& can_scroll
   const char*
     szShaderWord =  shader_type == SK::D3D9::ShaderClass::Pixel ? "Pixel" :
                                                                   "Vertex";
+  //save shaders if checked
+  if (g_bFreezeShaders && !savedFrozenShaders) {
+    frozenShaders = shaders;
+    frozenContents = list->contents;
+    savedFrozenShaders = true;
+  }
+  //overwrite "live" shaders if checked & there's a save
+  if (g_bFreezeShaders && savedFrozenShaders) {
+    shaders = frozenShaders;
+    list->contents = frozenContents;
+  }
+  //clear save if unchecked
+  if (!g_bFreezeShaders) {
+    savedFrozenShaders = false;
+  }
 
   if (list->dirty)
   {
@@ -7182,6 +7202,7 @@ SK_D3D9_LiveShaderClassView (SK::D3D9::ShaderClass shader_type, bool& can_scroll
   ImGui::BeginChild ( ImGui::GetID (szShaderWord),
                       ImVec2 ( font_size * 7.0f, std::max (font_size * 15.0f, list->last_ht)), true,
                         ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NavFlattened );
+  
 
   if (ImGui::IsWindowHovered ())
   {
@@ -7246,8 +7267,8 @@ SK_D3D9_LiveShaderClassView (SK::D3D9::ShaderClass shader_type, bool& can_scroll
       }
     }
   }
-
   ImGui::EndChild      ();
+
   ImGui::PopStyleColor ();
 
   ImGui::SameLine      ();
@@ -7264,7 +7285,7 @@ SK_D3D9_LiveShaderClassView (SK::D3D9::ShaderClass shader_type, bool& can_scroll
     ImGui::Checkbox ( shader_type == SK::D3D9::ShaderClass::Pixel ? "Cancel Draws Using Selected Pixel Shader" :
                                                                     "Cancel Draws Using Selected Vertex Shader",
                         &tracker->cancel_draws );  ImGui::SameLine ();
-
+    ImGui::Checkbox("Freeze shaders", &g_bFreezeShaders);
     LONG num_draws =
      ReadAcquire (&tracker->num_draws);
 
@@ -7323,8 +7344,8 @@ SK_D3D9_LiveShaderClassView (SK::D3D9::ShaderClass shader_type, bool& can_scroll
 
     SK_ImGui_AutoFont fixed_font (ImGui::GetIO ().Fonts->Fonts[1]);
 
-    ImGui::PushStyleColor (ImGuiCol_Text, ImVec4 (0.80f, 0.80f, 1.0f, 1.0f));
-    ImGui::TextWrapped    (disassembly [tracker->crc32c].header.c_str ());
+    //ImGui::PushStyleColor (ImGuiCol_Text, ImVec4 (0.80f, 0.80f, 1.0f, 1.0f));
+    //ImGui::TextWrapped    (disassembly [tracker->crc32c].header.c_str ());
 
     ImGui::SameLine       ();
     ImGui::BeginGroup     ();
@@ -7492,13 +7513,13 @@ SK_D3D9_LiveShaderClassView (SK::D3D9::ShaderClass shader_type, bool& can_scroll
 
     ImGui::Separator      ();
 
-    ImGui::PushStyleColor (ImGuiCol_Text, ImVec4 (0.99f, 0.99f, 0.01f, 1.0f));
-    ImGui::TextWrapped    (disassembly [tracker->crc32c].code.c_str ());
+    //ImGui::PushStyleColor (ImGuiCol_Text, ImVec4 (0.99f, 0.99f, 0.01f, 1.0f));
+    //ImGui::TextWrapped    (disassembly [tracker->crc32c].code.c_str ());
 
     ImGui::Separator      ();
 
-    ImGui::PushStyleColor (ImGuiCol_Text, ImVec4 (0.5f, 0.95f, 0.5f, 1.0f));
-    ImGui::TextWrapped    (disassembly [tracker->crc32c].footer.c_str ());
+    //ImGui::PushStyleColor (ImGuiCol_Text, ImVec4 (0.5f, 0.95f, 0.5f, 1.0f));
+    //ImGui::TextWrapped    (disassembly [tracker->crc32c].footer.c_str ());
 
     ImGui::PopStyleColor  (4);
     ImGui::PopID          ( );
