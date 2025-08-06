@@ -1,13 +1,24 @@
+<p>Custom reimplementation of Special K adapted for ArcheAge. <br />
+Only runs on DX9 because Archeage does not support DX11.</p>
+
+Current features:
+
+Direct shader edits (like reshade but indivdual shaders instead of the endview).
+
+All uses of this tool are purely cosmetic. It has no use in combat or lifeskilling.
+
+<br />
+Original project copyright © Kaldaien.
+
+Forked and later fully seperated from https://github.com/Kaldaien/SpecialK 
+<br /> <br /> <br /> 
+
+------------ Original Readme -----------
+
 <p align="center">
 <a href="https://github.com/SpecialKO/SpecialK/actions/workflows/build-windows.yml"><img src="https://github.com/SpecialKO/SpecialK/actions/workflows/build-windows.yml/badge.svg" alt="Builds"></a>&nbsp;
 <a href="https://discord.gg/SpecialK"><img alt="Discord" src="https://img.shields.io/discord/778539700981071872?logo=discord&label=Discord"></a>
 </p>
-
-Custom reimplementation of Special K adapted for ArcheAge.
-
-Original project copyright © Kaldaien.
-
-Forked and later fully seperated from https://github.com/Kaldaien/SpecialK 
 
 Special K&nbsp;&nbsp;<sub>*"Lovingly referred to as the Swiss Army Knife of PC gaming, Special K does a bit of everything. It is best known for fixing and enhancing graphics, its many detailed performance analysis and correction mods, and a constantly growing palette of tools that solve a wide variety of issues affecting PC games."*</sub>
 
