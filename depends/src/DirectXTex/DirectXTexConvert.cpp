@@ -1,4 +1,4 @@
-//-------------------------------------------------------------------------------------
+ï»¿//-------------------------------------------------------------------------------------
 // DirectXTexConvert.cpp
 //  
 // DirectX Texture Library - Image pixel format conversion 
@@ -1287,13 +1287,13 @@ _Use_decl_annotations_ bool DirectX::_LoadScanline(
 
                 // http://msdn.microsoft.com/en-us/library/windows/desktop/dd206750.aspx
 
-                // Y’  = Y - 16
-                // Cb’ = Cb - 128
-                // Cr’ = Cr - 128
+                // Yãƒ» = Y - 16
+                // Cbãƒ»= Cb - 128
+                // Crãƒ»= Cr - 128
 
-                // R = 1.1644Y’ + 1.5960Cr’
-                // G = 1.1644Y’ - 0.3917Cb’ - 0.8128Cr’
-                // B = 1.1644Y’ + 2.0172Cb’
+                // R = 1.1644Yãƒ»+ 1.5960Crãƒ»
+                // G = 1.1644Yãƒ»- 0.3917Cbãƒ»- 0.8128Crãƒ»
+                // B = 1.1644Yãƒ»+ 2.0172Cbãƒ»
 
                 int r = (298 * y + 409 * v + 128) >> 8;
                 int g = (298 * y - 100 * u - 208 * v + 128) >> 8;
@@ -1323,13 +1323,13 @@ _Use_decl_annotations_ bool DirectX::_LoadScanline(
 
                 // http://msdn.microsoft.com/en-us/library/windows/desktop/bb970578.aspx
 
-                // Y’  = Y - 64
-                // Cb’ = Cb - 512
-                // Cr’ = Cr - 512
+                // Yãƒ» = Y - 64
+                // Cbãƒ»= Cb - 512
+                // Crãƒ»= Cr - 512
 
-                // R = 1.1678Y’ + 1.6007Cr’
-                // G = 1.1678Y’ - 0.3929Cb’ - 0.8152Cr’
-                // B = 1.1678Y’ + 2.0232Cb’
+                // R = 1.1678Yãƒ»+ 1.6007Crãƒ»
+                // G = 1.1678Yãƒ»- 0.3929Cbãƒ»- 0.8152Crãƒ»
+                // B = 1.1678Yãƒ»+ 2.0232Cbãƒ»
 
                 int r = static_cast<int>((76533 * y + 104905 * v + 32768) >> 16);
                 int g = static_cast<int>((76533 * y - 25747 * u - 53425 * v + 32768) >> 16);
@@ -1359,13 +1359,13 @@ _Use_decl_annotations_ bool DirectX::_LoadScanline(
 
                 // http://msdn.microsoft.com/en-us/library/windows/desktop/bb970578.aspx
 
-                // Y’  = Y - 4096
-                // Cb’ = Cb - 32768
-                // Cr’ = Cr - 32768
+                // Yãƒ» = Y - 4096
+                // Cbãƒ»= Cb - 32768
+                // Crãƒ»= Cr - 32768
 
-                // R = 1.1689Y’ + 1.6023Cr’
-                // G = 1.1689Y’ - 0.3933Cb’ - 0.8160Cr’
-                // B = 1.1689Y’+ 2.0251Cb’
+                // R = 1.1689Yãƒ»+ 1.6023Crãƒ»
+                // G = 1.1689Yãƒ»- 0.3933Cbãƒ»- 0.8160Crãƒ»
+                // B = 1.1689Yãƒ» 2.0251Cbãƒ»
 
                 int r = static_cast<int>((76607 * y + 105006 * v + 32768) >> 16);
                 int g = static_cast<int>((76607 * y - 25772 * u - 53477 * v + 32768) >> 16);

@@ -464,54 +464,52 @@ SK_TraceLoadLibrary (       HMODULE hCallingMod,
 
   if (hCallingMod != SK_GetDLL ())
   {
-    if ( (! (SK_GetDLLRole () & DLL_ROLE::D3D9)) && config.apis.d3d9.hook &&
-         ( StrStrI  (lpFileName, SK_TEXT("d3d9.dll"))  ||
-           StrStrIW (wszCallingMod,     L"d3d9.dll")   ||
+    if ((!(SK_GetDLLRole() & DLL_ROLE::D3D9)) && config.apis.d3d9.hook &&
+      (StrStrI(lpFileName, SK_TEXT("d3d9.dll")) ||
+        StrStrIW(wszCallingMod, L"d3d9.dll") ||
 
-           StrStrI  (lpFileName, SK_TEXT("d3dx9_"))    ||
-           StrStrIW (wszCallingMod,     L"d3dx9_")     ||
+        StrStrI(lpFileName, SK_TEXT("d3dx9_")) ||
+        StrStrIW(wszCallingMod, L"d3dx9_") ||
 
-           StrStrI  (lpFileName, SK_TEXT("Direct3D9")) ||
-           StrStrIW (wszCallingMod,     L"Direct3D9")  ||
+        StrStrI(lpFileName, SK_TEXT("Direct3D9")) ||
+        StrStrIW(wszCallingMod, L"Direct3D9") ||
 
-           // NVIDIA's User-Mode D3D Frontend
-           StrStrI  (lpFileName, SK_TEXT("nvd3dum.dll")) ||
-           StrStrIW (wszCallingMod,     L"nvd3dum.dll")  ) )
-      SK_RunOnce (SK_BootD3D9   ());
+        // NVIDIA's User-Mode D3D Frontend
+        StrStrI(lpFileName, SK_TEXT("nvd3dum.dll")) ||
+        StrStrIW(wszCallingMod, L"nvd3dum.dll")))
+      SK_RunOnce(SK_BootD3D9());
 #ifdef _M_IX86
-    else if ( (! (SK_GetDLLRole () & DLL_ROLE::D3D8)) && config.apis.d3d8.hook &&
-              ( StrStrI  (lpFileName, SK_TEXT("d3d8.dll")) ||
-                StrStrIW (wszCallingMod,     L"d3d8.dll")    ) )
-      SK_BootD3D8   ();
-    else if ( (! (SK_GetDLLRole () & DLL_ROLE::DDraw)) && config.apis.ddraw.hook &&
-              ( StrStrI  (lpFileName, SK_TEXT("ddraw.dll")) ||
-                StrStrIW (wszCallingMod,     L"ddraw.dll")   ) )
-      SK_BootDDraw  ();
+    else if ((!(SK_GetDLLRole() & DLL_ROLE::D3D8)) && config.apis.d3d8.hook &&
+      (StrStrI(lpFileName, SK_TEXT("d3d8.dll")) ||
+        StrStrIW(wszCallingMod, L"d3d8.dll")))
+      SK_BootD3D8();
+    else if ((!(SK_GetDLLRole() & DLL_ROLE::DDraw)) && config.apis.ddraw.hook &&
+      (StrStrI(lpFileName, SK_TEXT("ddraw.dll")) ||
+        StrStrIW(wszCallingMod, L"ddraw.dll")))
+      SK_BootDDraw();
 #endif
-    else if ( (! (SK_GetDLLRole () & DLL_ROLE::DXGI)) && config.apis.dxgi.d3d11.hook &&
-              ( StrStrI  (lpFileName, SK_TEXT("d3d11.dll")) ||
-                StrStrIW (wszCallingMod,     L"d3d11.dll") ))
-      SK_RunOnce (SK_BootDXGI   ());
-    else if ( (! (SK_GetDLLRole () & DLL_ROLE::DXGI)) && config.apis.dxgi.d3d11.hook &&
-              ( StrStrI  (lpFileName, SK_TEXT("dxcore.dll")) || // Unity?! WTF are you doing?
-                StrStrIW (wszCallingMod,     L"dxcore.dll") ))
-      SK_RunOnce (SK_BootDXGI   ());
-    else if ( (! (SK_GetDLLRole () & DLL_ROLE::DXGI)) && config.apis.dxgi.d3d12.hook &&
-              ( StrStrI  (lpFileName, SK_TEXT("d3d12.dll")) ||
-                StrStrIW (wszCallingMod,     L"d3d12.dll") ))
-      SK_RunOnce (SK_BootDXGI   ());
-    else if (   StrStrI  (lpFileName, SK_TEXT("vulkan-1.dll")) ||
-                StrStrIW (wszCallingMod,     L"vulkan-1.dll")  )
-      SK_RunOnce (SK_BootVulkan ());
-    else if (  (! (SK_GetDLLRole () & DLL_ROLE::OpenGL)) && config.apis.OpenGL.hook &&
-              ( StrStrI  (lpFileName, SK_TEXT("OpenGL32.dll")) ||
-                StrStrIW (wszCallingMod,     L"OpenGL32.dll") ))
-    {   if (!SK_IsModuleLoaded (L"EOSOVH-Win64-Shipping.dll"))
-          SK_RunOnce (SK_BootOpenGL ());
+    else if ((!(SK_GetDLLRole() & DLL_ROLE::DXGI)) && config.apis.dxgi.d3d11.hook &&
+      (StrStrI(lpFileName, SK_TEXT("d3d11.dll")) ||
+        StrStrIW(wszCallingMod, L"d3d11.dll")))
+      SK_RunOnce(SK_BootDXGI());
+    else if ((!(SK_GetDLLRole() & DLL_ROLE::DXGI)) && config.apis.dxgi.d3d11.hook &&
+      (StrStrI(lpFileName, SK_TEXT("dxcore.dll")) || // Unity?! WTF are you doing?
+        StrStrIW(wszCallingMod, L"dxcore.dll")))
+      SK_RunOnce(SK_BootDXGI());
+    else if ((!(SK_GetDLLRole() & DLL_ROLE::DXGI)) && config.apis.dxgi.d3d12.hook &&
+      (StrStrI(lpFileName, SK_TEXT("d3d12.dll")) ||
+        StrStrIW(wszCallingMod, L"d3d12.dll")))
+      SK_RunOnce(SK_BootDXGI());
+    else if (StrStrI(lpFileName, SK_TEXT("vulkan-1.dll")) ||
+      StrStrIW(wszCallingMod, L"vulkan-1.dll"))
+      SK_RunOnce(SK_BootVulkan());
+    else if ((!(SK_GetDLLRole() & DLL_ROLE::OpenGL)) && config.apis.OpenGL.hook &&
+      (StrStrI(lpFileName, SK_TEXT("OpenGL32.dll")) ||
+        StrStrIW(wszCallingMod, L"OpenGL32.dll")))
+    {
+      if (!SK_IsModuleLoaded(L"EOSOVH-Win64-Shipping.dll"))
+        SK_RunOnce(SK_BootOpenGL());
     }
-    else if (   StrStrI  (lpFileName, SK_TEXT("GameInput.dll")) ||
-                StrStrIW (wszCallingMod,     L"GameInput.dll")  )
-      SK_RunOnce (SK_Input_HookGameInput ());
     else if (   //SK_XInput_LinkedVersion.empty () &&
                 StrStrI (lpFileName, SK_TEXT("xinput1_3.dll")) )
                      SK_RunOnce (SK_Input_HookXInput1_3 ());

@@ -95,6 +95,7 @@
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Label="Shared">
+    <Import Project="packages\Microsoft.GameInput.2.0.26100.5334\build\native\targets\Microsoft.GameInput.targets" Condition="Exists('packages\Microsoft.GameInput.2.0.26100.5334\build\native\targets\Microsoft.GameInput.targets')" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -193,10 +194,10 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level4</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>NTDDI_VERSION=NTDDI_WIN11_GE;_WIN32_WINNT=_WIN32_WINNT_WIN10;NOMINMAX;WIN32;_DEBUG;_WINDOWS;_USRDLL;SK_EXPORTS;%(PreprocessorDefinitions);/D_WIN32_WINNT _WIN32_WINNT_WIN7;/DWINVER _WIN32_WINNT_WIN7;PSAPI_VERSION=1;_CRT_SECURE_NO_WARNINGS;NOMINMAX;_CRT_NON_CONFORMING_SWPRINTFS;SK_BUILD_DLL=1;DIRECTINPUT_VERSION=0x0800;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GDK_GAMING_DESKTOP;NTDDI_VERSION=NTDDI_WIN11_GE;_WIN32_WINNT=_WIN32_WINNT_WIN10;NOMINMAX;WIN32;_DEBUG;_WINDOWS;_USRDLL;SK_EXPORTS;%(PreprocessorDefinitions);/D_WIN32_WINNT _WIN32_WINNT_WIN7;/DWINVER _WIN32_WINNT_WIN7;PSAPI_VERSION=1;_CRT_SECURE_NO_WARNINGS;NOMINMAX;_CRT_NON_CONFORMING_SWPRINTFS;SK_BUILD_DLL=1;DIRECTINPUT_VERSION=0x0800;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS</PreprocessorDefinitions>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -243,6 +244,7 @@
       <UseFullPaths>false</UseFullPaths>
       <GuardEHContMetadata>false</GuardEHContMetadata>
       <CreateHotpatchableImage>true</CreateHotpatchableImage>
+      <AdditionalIncludeDirectories>$(USERPROFILE)\SpecialK\SpecialK-AA\packages\Microsoft.GameInput.2.0.26100.5334\native\include;$(GameInputNativeBuildDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -258,7 +260,7 @@
       </EntryPointSymbol>
       <FullProgramDatabaseFile>true</FullProgramDatabaseFile>
       <AssemblyDebug>true</AssemblyDebug>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;psapi.lib;legacy_stdio_definitions.lib;mmdevapi.lib;%(AdditionalDependencies);imm32.lib;wininet.lib;tdh.lib;</AdditionalDependencies>
+      <AdditionalDependencies>GameInput.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;psapi.lib;legacy_stdio_definitions.lib;mmdevapi.lib;%(AdditionalDependencies);imm32.lib;wininet.lib;tdh.lib;</AdditionalDependencies>
       <BaseAddress>
       </BaseAddress>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
@@ -277,6 +279,7 @@
       <StackReserveSize>0x800000</StackReserveSize>
       <StackCommitSize>0x10000</StackCommitSize>
       <CreateHotPatchableImage>X86Image</CreateHotPatchableImage>
+      <AdditionalLibraryDirectories>$(USERPROFILE)\SpecialK\SpecialK-AA\packages\Microsoft.GameInput.2.0.26100.5334\native\lib\x64;</AdditionalLibraryDirectories>
     </Link>
     <ProjectReference />
     <Manifest>
@@ -309,10 +312,10 @@ if exist "$(TargetDir)$(TargetName).exp" ( del "$(TargetDir)$(TargetName).exp" )
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level4</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>NTDDI_VERSION=NTDDI_WIN11_GE;_WIN32_WINNT=_WIN32_WINNT_WIN10;NOMINMAX;_WIN64;WIN32;_DEBUG;_WINDOWS;_USRDLL;SK_EXPORTS;GLEW_STATIC;%(PreprocessorDefinitions);/D_WIN32_WINNT _WIN32_WINNT_WIN7;/DWINVER _WIN32_WINNT_WIN7;PSAPI_VERSION=1;_CRT_SECURE_NO_WARNINGS;NOMINMAX;_CRT_NON_CONFORMING_SWPRINTFS;SK_BUILD_DLL=1;DIRECTINPUT_VERSION=0x0800;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GDK_GAMING_DESKTOP;NTDDI_VERSION=NTDDI_WIN11_GE;_WIN32_WINNT=_WIN32_WINNT_WIN10;NOMINMAX;_WIN64;WIN32;_DEBUG;_WINDOWS;_USRDLL;SK_EXPORTS;GLEW_STATIC;%(PreprocessorDefinitions);/D_WIN32_WINNT _WIN32_WINNT_WIN7;/DWINVER _WIN32_WINNT_WIN7;PSAPI_VERSION=1;_CRT_SECURE_NO_WARNINGS;NOMINMAX;_CRT_NON_CONFORMING_SWPRINTFS;SK_BUILD_DLL=1;DIRECTINPUT_VERSION=0x0800;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalOptions>/execution-charset:utf-8 /O0 /Zo /Gw /Oy- /GR /cgthreads8 /Zc:implicitNoexcept /Zc:strictStrings-</AdditionalOptions>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -320,8 +323,7 @@ if exist "$(TargetDir)$(TargetName).exp" ( del "$(TargetDir)$(TargetName).exp" )
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <ControlFlowGuard>false</ControlFlowGuard>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(USERPROFILE)\SpecialK\SpecialK-AA\packages\Microsoft.GameInput.2.0.26100.5334\native\include;</AdditionalIncludeDirectories>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <SmallerTypeCheck>false</SmallerTypeCheck>
@@ -375,7 +377,7 @@ if exist "$(TargetDir)$(TargetName).exp" ( del "$(TargetDir)$(TargetName).exp" )
       <FullProgramDatabaseFile>true</FullProgramDatabaseFile>
       <AssemblyDebug>true</AssemblyDebug>
       <LargeAddressAware>true</LargeAddressAware>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;psapi.lib;legacy_stdio_definitions.lib;mmdevapi.lib;%(AdditionalDependencies);imm32.lib;wininet.lib;tdh.lib;</AdditionalDependencies>
+      <AdditionalDependencies>GameInput.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;psapi.lib;legacy_stdio_definitions.lib;mmdevapi.lib;%(AdditionalDependencies);imm32.lib;wininet.lib;tdh.lib;</AdditionalDependencies>
       <BaseAddress>
       </BaseAddress>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
@@ -394,6 +396,7 @@ if exist "$(TargetDir)$(TargetName).exp" ( del "$(TargetDir)$(TargetName).exp" )
       <StackReserveSize>0x800000</StackReserveSize>
       <StackCommitSize>0x10000</StackCommitSize>
       <CreateHotPatchableImage>X64Image</CreateHotPatchableImage>
+      <AdditionalLibraryDirectories>$(USERPROFILE)\SpecialK\SpecialK-AA\packages\Microsoft.GameInput.2.0.26100.5334\native\lib\x64;$(GameInputNativeBuildDirectory)lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <ProjectReference />
     <ResourceCompile>
@@ -430,14 +433,14 @@ if exist "$(TargetDir)$(TargetName).exp" ( del "$(TargetDir)$(TargetName).exp" )
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>NTDDI_VERSION=WDK_NTDDI_VERSION;DIRECTINPUT_VERSION=0x0800;PSAPI_VERSION=1;NOMINMAX;_UNICODE;UNICODE;WIN32;NDEBUG;_LIB;_USRDLL;_WINDOWS;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;_CRT_NON_CONFORMING_SWPRINTFS;_CRT_STDIO_ARBITRARY_WIDE_SPECIFIERS;_STL_CONCRT_SUPPORT;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;%(PreprocessorDefinitions);SK_BUILD_DLL=1;SK_EXPORTS;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GDK_GAMING_DESKTOP;NTDDI_VERSION=WDK_NTDDI_VERSION;DIRECTINPUT_VERSION=0x0800;PSAPI_VERSION=1;NOMINMAX;_UNICODE;UNICODE;WIN32;NDEBUG;_LIB;_USRDLL;_WINDOWS;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;_CRT_NON_CONFORMING_SWPRINTFS;_CRT_STDIO_ARBITRARY_WIDE_SPECIFIERS;_STL_CONCRT_SUPPORT;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;%(PreprocessorDefinitions);SK_BUILD_DLL=1;SK_EXPORTS;</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <EnablePREfast>false</EnablePREfast>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
-      <AdditionalIncludeDirectories>$(SolutionDir)include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(USERPROFILE)\SpecialK\SpecialK-AA\packages\Microsoft.GameInput.2.0.26100.5334\native\include;$(SolutionDir)include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <DisableSpecificWarnings>4201;4702;4061</DisableSpecificWarnings>
       <ExceptionHandling>Async</ExceptionHandling>
@@ -454,7 +457,7 @@ if exist "$(TargetDir)$(TargetName).exp" ( del "$(TargetDir)$(TargetName).exp" )
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
       <CreateHotpatchableImage>true</CreateHotpatchableImage>
       <ErrorReporting>Send</ErrorReporting>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <TreatWarningAsError>false</TreatWarningAsError>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseUnicodeForAssemblerListing>true</UseUnicodeForAssemblerListing>
@@ -476,7 +479,7 @@ if exist "$(TargetDir)$(TargetName).exp" ( del "$(TargetDir)$(TargetName).exp" )
       <LargeAddressAware>true</LargeAddressAware>
       <EntryPointSymbol>
       </EntryPointSymbol>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;psapi.lib;legacy_stdio_definitions.lib;mmdevapi.lib;%(AdditionalDependencies);imm32.lib;wininet.lib;tdh.lib;userenv.lib;comctl32.lib</AdditionalDependencies>
+      <AdditionalDependencies>GameInput.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;psapi.lib;legacy_stdio_definitions.lib;mmdevapi.lib;%(AdditionalDependencies);imm32.lib;wininet.lib;tdh.lib;userenv.lib;comctl32.lib</AdditionalDependencies>
       <ImportLibrary />
       <AssemblyDebug>false</AssemblyDebug>
       <SetChecksum>true</SetChecksum>
@@ -505,6 +508,7 @@ if exist "$(TargetDir)$(TargetName).exp" ( del "$(TargetDir)$(TargetName).exp" )
       <CreateHotPatchableImage>X86Image</CreateHotPatchableImage>
       <TurnOffAssemblyGeneration>true</TurnOffAssemblyGeneration>
       <IgnoreSpecificDefaultLibraries>MSVCRT</IgnoreSpecificDefaultLibraries>
+      <AdditionalLibraryDirectories>$(USERPROFILE)\SpecialK\SpecialK-AA\packages\Microsoft.GameInput.2.0.26100.5334\native\lib\x64;</AdditionalLibraryDirectories>
     </Link>
     <ProjectReference />
     <PostBuildEvent>
@@ -547,14 +551,14 @@ if exist "$(TargetDir)$(TargetName).exp" ( del "$(TargetDir)$(TargetName).exp" )
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (clang)|Win32'">
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>NTDDI_VERSION=NTDDI_WIN11_GE;_WIN32_WINNT=_WIN32_WINNT_WIN10;DIRECTINPUT_VERSION=0x0800;PSAPI_VERSION=1;NOMINMAX;_UNICODE;UNICODE;SK_BUILT_BY_CLANG;WIN32;NDEBUG;_LIB;_USRDLL;_WINDOWS;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;_CRT_NON_CONFORMING_SWPRINTFS;_CRT_STDIO_ARBITRARY_WIDE_SPECIFIERS;_STL_CONCRT_SUPPORT;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;%(PreprocessorDefinitions);SK_BUILD_DLL=1;SK_EXPORTS;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GDK_GAMING_DESKTOP;NTDDI_VERSION=NTDDI_WIN11_GE;_WIN32_WINNT=_WIN32_WINNT_WIN10;DIRECTINPUT_VERSION=0x0800;PSAPI_VERSION=1;NOMINMAX;_UNICODE;UNICODE;SK_BUILT_BY_CLANG;WIN32;NDEBUG;_LIB;_USRDLL;_WINDOWS;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;_CRT_NON_CONFORMING_SWPRINTFS;_CRT_STDIO_ARBITRARY_WIDE_SPECIFIERS;_STL_CONCRT_SUPPORT;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;%(PreprocessorDefinitions);SK_BUILD_DLL=1;SK_EXPORTS;</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <EnablePREfast>false</EnablePREfast>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
-      <AdditionalIncludeDirectories>$(SolutionDir)include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(USERPROFILE)\SpecialK\SpecialK-AA\packages\Microsoft.GameInput.2.0.26100.5334\native\include;$(SolutionDir)include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <DisableSpecificWarnings>4201;4702;4061</DisableSpecificWarnings>
       <ExceptionHandling>Async</ExceptionHandling>
@@ -572,7 +576,7 @@ if exist "$(TargetDir)$(TargetName).exp" ( del "$(TargetDir)$(TargetName).exp" )
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
       <CreateHotpatchableImage>true</CreateHotpatchableImage>
       <ErrorReporting>Send</ErrorReporting>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <TreatWarningAsError>false</TreatWarningAsError>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseUnicodeForAssemblerListing>true</UseUnicodeForAssemblerListing>
@@ -592,7 +596,7 @@ if exist "$(TargetDir)$(TargetName).exp" ( del "$(TargetDir)$(TargetName).exp" )
       <LargeAddressAware>true</LargeAddressAware>
       <EntryPointSymbol>
       </EntryPointSymbol>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;psapi.lib;legacy_stdio_definitions.lib;mmdevapi.lib;%(AdditionalDependencies);imm32.lib;wininet.lib;tdh.lib;userenv.lib;comctl32.lib</AdditionalDependencies>
+      <AdditionalDependencies>GameInput.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;psapi.lib;legacy_stdio_definitions.lib;mmdevapi.lib;%(AdditionalDependencies);imm32.lib;wininet.lib;tdh.lib;userenv.lib;comctl32.lib</AdditionalDependencies>
       <ImportLibrary>
       </ImportLibrary>
       <AssemblyDebug>false</AssemblyDebug>
@@ -619,6 +623,7 @@ if exist "$(TargetDir)$(TargetName).exp" ( del "$(TargetDir)$(TargetName).exp" )
       <StackCommitSize>0x10000</StackCommitSize>
       <CreateHotPatchableImage>ItaniumImage</CreateHotPatchableImage>
       <TurnOffAssemblyGeneration>true</TurnOffAssemblyGeneration>
+      <AdditionalLibraryDirectories>$(USERPROFILE)\SpecialK\SpecialK-AA\packages\Microsoft.GameInput.2.0.26100.5334\native\lib\x64;</AdditionalLibraryDirectories>
     </Link>
     <ProjectReference />
     <PostBuildEvent>
@@ -661,13 +666,13 @@ if exist "$(TargetDir)$(TargetName).exp" ( del "$(TargetDir)$(TargetName).exp" )
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PreprocessorDefinitions>NTDDI_VERSION=WDK_NTDDI_VERSION;DIRECTINPUT_VERSION=0x0800;PSAPI_VERSION=1;NOMINMAX;_UNICODE;UNICODE;_WIN64;WIN32;NDEBUG;_LIB;_USRDLL;_WINDOWS;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;_CRT_NON_CONFORMING_SWPRINTFS;_CRT_STDIO_ARBITRARY_WIDE_SPECIFIERS;_STL_CONCRT_SUPPORT;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;%(PreprocessorDefinitions);SK_BUILD_DLL=1;SK_EXPORTS;</PreprocessorDefinitions>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PreprocessorDefinitions>GDK_GAMING_DESKTOP;GDK_GAMING_DESKTOP;NTDDI_VERSION=WDK_NTDDI_VERSION;DIRECTINPUT_VERSION=0x0800;PSAPI_VERSION=1;NOMINMAX;_UNICODE;UNICODE;_WIN64;WIN32;NDEBUG;_LIB;_USRDLL;_WINDOWS;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;_CRT_NON_CONFORMING_SWPRINTFS;_CRT_STDIO_ARBITRARY_WIDE_SPECIFIERS;_STL_CONCRT_SUPPORT;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;%(PreprocessorDefinitions);SK_BUILD_DLL=1;SK_EXPORTS;</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <Optimization>MaxSpeed</Optimization>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <DisableSpecificWarnings>4201;4702;4061</DisableSpecificWarnings>
       <StringPooling>true</StringPooling>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -683,7 +688,7 @@ if exist "$(TargetDir)$(TargetName).exp" ( del "$(TargetDir)$(TargetName).exp" )
       <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
       <ErrorReporting>Send</ErrorReporting>
       <OmitFramePointers>false</OmitFramePointers>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <TreatWarningAsError>false</TreatWarningAsError>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseUnicodeForAssemblerListing>true</UseUnicodeForAssemblerListing>
@@ -693,6 +698,7 @@ if exist "$(TargetDir)$(TargetName).exp" ( del "$(TargetDir)$(TargetName).exp" )
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <FloatingPointExceptions>false</FloatingPointExceptions>
       <IntelJCCErratum>true</IntelJCCErratum>
+      <AdditionalIncludeDirectories>$(USERPROFILE)\SpecialK\SpecialK-AA\packages\Microsoft.GameInput.2.0.26100.5334\native\include;$(GameInputNativeBuildDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -706,9 +712,8 @@ if exist "$(TargetDir)$(TargetName).exp" ( del "$(TargetDir)$(TargetName).exp" )
       <EntryPointSymbol>
       </EntryPointSymbol>
       <FullProgramDatabaseFile>true</FullProgramDatabaseFile>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;psapi.lib;legacy_stdio_definitions.lib;mmdevapi.lib;%(AdditionalDependencies);imm32.lib;wininet.lib;tdh.lib;userenv.lib;comctl32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>
-      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>GameInput.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;psapi.lib;legacy_stdio_definitions.lib;mmdevapi.lib;%(AdditionalDependencies);imm32.lib;wininet.lib;tdh.lib;userenv.lib;comctl32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(USERPROFILE)\SpecialK\SpecialK-AA\packages\Microsoft.GameInput.2.0.26100.5334\native\lib\x64;</AdditionalLibraryDirectories>
       <ImportLibrary />
       <SetChecksum>true</SetChecksum>
       <BaseAddress>
@@ -781,8 +786,8 @@ if exist "$(TargetDir)$(TargetName).exp" ( del "$(TargetDir)$(TargetName).exp" )
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (clang)|x64'">
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PreprocessorDefinitions>NTDDI_VERSION=NTDDI_WIN11_GE;_WIN32_WINNT=_WIN32_WINNT_WIN10;DIRECTINPUT_VERSION=0x0800;PSAPI_VERSION=1;NOMINMAX;_UNICODE;UNICODE;SK_BUILT_BY_CLANG;_WIN64;WIN32;NDEBUG;_LIB;_USRDLL;_WINDOWS;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;_CRT_NON_CONFORMING_SWPRINTFS;_CRT_STDIO_ARBITRARY_WIDE_SPECIFIERS;_STL_CONCRT_SUPPORT;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;%(PreprocessorDefinitions);SK_BUILD_DLL=1;SK_EXPORTS;</PreprocessorDefinitions>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PreprocessorDefinitions>GDK_GAMING_DESKTOP;NTDDI_VERSION=NTDDI_WIN11_GE;_WIN32_WINNT=_WIN32_WINNT_WIN10;DIRECTINPUT_VERSION=0x0800;PSAPI_VERSION=1;NOMINMAX;_UNICODE;UNICODE;SK_BUILT_BY_CLANG;_WIN64;WIN32;NDEBUG;_LIB;_USRDLL;_WINDOWS;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;_CRT_NON_CONFORMING_SWPRINTFS;_CRT_STDIO_ARBITRARY_WIDE_SPECIFIERS;_STL_CONCRT_SUPPORT;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;%(PreprocessorDefinitions);SK_BUILD_DLL=1;SK_EXPORTS;</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
@@ -804,7 +809,7 @@ if exist "$(TargetDir)$(TargetName).exp" ( del "$(TargetDir)$(TargetName).exp" )
       <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
       <ErrorReporting>Send</ErrorReporting>
       <OmitFramePointers>false</OmitFramePointers>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <TreatWarningAsError>false</TreatWarningAsError>
       <CreateHotpatchableImage>false</CreateHotpatchableImage>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -813,6 +818,7 @@ if exist "$(TargetDir)$(TargetName).exp" ( del "$(TargetDir)$(TargetName).exp" )
       <SDLCheck>false</SDLCheck>
       <DiagnosticsFormat>Caret</DiagnosticsFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>$(USERPROFILE)\SpecialK\SpecialK-AA\packages\Microsoft.GameInput.2.0.26100.5334\native\include;$(GameInputNativeBuildDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -826,9 +832,8 @@ if exist "$(TargetDir)$(TargetName).exp" ( del "$(TargetDir)$(TargetName).exp" )
       <EntryPointSymbol>
       </EntryPointSymbol>
       <FullProgramDatabaseFile>true</FullProgramDatabaseFile>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;psapi.lib;legacy_stdio_definitions.lib;mmdevapi.lib;%(AdditionalDependencies);imm32.lib;wininet.lib;tdh.lib;userenv.lib;comctl32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>
-      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>GameInput.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;psapi.lib;legacy_stdio_definitions.lib;mmdevapi.lib;%(AdditionalDependencies);imm32.lib;wininet.lib;tdh.lib;userenv.lib;comctl32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(USERPROFILE)\SpecialK\SpecialK-AA\packages\Microsoft.GameInput.2.0.26100.5334\native\lib\x64;</AdditionalLibraryDirectories>
       <ImportLibrary>
       </ImportLibrary>
       <SetChecksum>true</SetChecksum>
@@ -2515,6 +2520,7 @@ if exist "$(TargetDir)$(TargetName).exp" ( del "$(TargetDir)$(TargetName).exp" )
     <None Include="include\SpecialK\commands\mem.inl" />
     <None Include="include\SpecialK\commands\update.inl" />
     <None Include="LICENSE" />
+    <None Include="packages.config" />
     <None Include="README.md" />
     <None Include="resource\cursors\ovr_horz.cur" />
     <None Include="resource\cursors\ovr_ptr.cur" />
@@ -3948,4 +3954,10 @@ if exist "$(TargetDir)$(TargetName).exp" ( del "$(TargetDir)$(TargetName).exp" )
     </FxCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.GameInput.2.0.26100.5334\build\native\targets\Microsoft.GameInput.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.GameInput.2.0.26100.5334\build\native\targets\Microsoft.GameInput.targets'))" />
+  </Target>
 </Project>

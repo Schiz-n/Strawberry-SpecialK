@@ -251,6 +251,7 @@
       <Filter>Header Files</Filter>
     </None>
     <None Include="libzma.sln" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\..\..\include\lzma\7zVersion.rc">

@@ -29,6 +29,7 @@
 
 #include <hidclass.h>
 #include <cwctype>
+bool SK_GameInput_EmulatedPlayStation = false;
 
 bool cursor_vis = false;
 

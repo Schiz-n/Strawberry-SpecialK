@@ -18,7 +18,7 @@
  *   If not, see <http://www.gnu.org/licenses/>.
  *
 **/
-
+/*
 #ifndef __SK__GAME_INPUT_H__
 #define __SK__GAME_INPUT_H__
 

@@ -746,7 +746,7 @@ SK_Input_Init (void)
     SK_Input_HookWGI ();
 
   if (config.input.gamepad.hook_game_input)
-    SK_Input_HookGameInput ();
+    //SK_Input_HookGameInput ();
 
   if (config.input.gamepad.hook_xinput)
   {

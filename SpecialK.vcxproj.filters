@@ -4762,6 +4762,7 @@
       <Filter>Libraries\64-bit\Tobii</Filter>
     </None>
     <None Include=".editorconfig" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource\Resource.rc">

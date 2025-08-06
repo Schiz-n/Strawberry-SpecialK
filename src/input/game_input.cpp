@@ -20,7 +20,6 @@
  *   If not, see <http://www.gnu.org/licenses/>.
  *
 **/
-
 #include <SpecialK/stdafx.h>
 #include <SpecialK/input/game_input.h>
 
@@ -30,6 +29,8 @@
 #undef  __SK_SUBSYSTEM__
 #endif
 #define __SK_SUBSYSTEM__ L"Input Mgr."
+
+/*
 
 #define SK_LOG_INPUT_CALL { static int  calls  = 0;             \
   { SK_LOG0 ( (L"[!] > Call #%lu: %hs", calls++, __FUNCTION__), \
@@ -1948,3 +1949,4 @@ GameInputCreate_BypassSystemDLL (IGameInput** gameInput)
   return
     GameInputCreate_Detour (gameInput);
 }
+*/
