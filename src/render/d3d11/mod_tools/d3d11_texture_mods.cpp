@@ -362,7 +362,7 @@ SK_D3D11_LiveTextureView (bool& can_scroll, SK_TLS* pTLS = SK_TLS_Bottom ())
   ImGui::SameLine  ();
 
   ImGui::PushItemWidth (font_size * slen);
-  ImGui::SliderInt     ("Frames Between List Refreshes", &refresh_interval, 0, 120);
+  ImGui::SliderInt     ("Frames Between List Refreshes", &refresh_interval, 0, 12000);
   ImGui::PopItemWidth  ();
 
   ImGui::Separator ();

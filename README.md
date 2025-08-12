@@ -1,5 +1,6 @@
-<p>Custom reimplementation of Special K adapted for ArcheAge. <br />
-Only runs on DX9 because Archeage does not support DX11.</p>
+<p>Custom reimplementation of Special K adapted for ArcheAge and Hit: The World. <br />
+Only runs on DX9 because Archeage does not support DX11. <br />
+Except Hit: The World, that runs on DX11.</p>
 
 Current features:
 
