@@ -1791,7 +1791,7 @@ SK_Inject_EnableCentralizedConfig (void)
   {
     case SK_RenderAPI::D3D9:
     case SK_RenderAPI::D3D9Ex:
-      SK_SaveConfig (L"d3d9");
+      SK_SaveConfig (L"dxd9");
       break;
 
 #ifndef _M_AMD64
@@ -1946,7 +1946,7 @@ SK_Inject_SwitchToRenderWrapper (void)
   {
     case SK_RenderAPI::D3D9:
     case SK_RenderAPI::D3D9Ex:
-      lstrcatW (wszOut, L"\\d3d9.dll");
+      lstrcatW (wszOut, L"\\d3d11.dll");
       break;
 
 #ifndef _M_AMD64

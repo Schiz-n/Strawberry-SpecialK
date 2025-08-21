@@ -543,7 +543,7 @@ D3D9CreateTexture_Detour (IDirect3DDevice9    *This,
   SK::D3D9::TextureManager& tex_mgr =
     SK_D3D9_GetTextureManager ();
 
-  if (config.textures.d3d9_mod || tex_mgr.init)
+  if (true || tex_mgr.init)
   {
     if ( (Usage & D3DUSAGE_RENDERTARGET) !=
                   D3DUSAGE_RENDERTARGET )

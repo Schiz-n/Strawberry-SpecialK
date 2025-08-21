@@ -5138,7 +5138,7 @@ D3D9CreateDeviceEx_Override ( IDirect3D9Ex           *This,
 
   if (! SK_D3D9_IsDummyD3D9Device (pPresentationParameters))
   {
-    if (config.textures.d3d9_mod)
+    if (true)
       BehaviorFlags |= D3DCREATE_MULTITHREADED;
 
     if (config.display.force_fullscreen && hFocusWindow)
@@ -5579,7 +5579,7 @@ D3D9CreateDevice_Override ( IDirect3D9*            This,
   if ( pPresentationParameters != nullptr &&
       (! SK_D3D9_IsDummyD3D9Device (pPresentationParameters) ))
   {
-    if (config.textures.d3d9_mod)
+    if (true)
       BehaviorFlags |= D3DCREATE_MULTITHREADED;
 
     if (config.display.force_fullscreen   &&   hFocusWindow)
@@ -6068,7 +6068,7 @@ D3D9ExCreateDevice_Override ( IDirect3D9*            This,
 
   if (! SK_D3D9_IsDummyD3D9Device (pPresentationParameters))
   {
-    if (config.textures.d3d9_mod)
+    if (true)
       BehaviorFlags |= D3DCREATE_MULTITHREADED;
 
     if (config.display.force_fullscreen && hFocusWindow)

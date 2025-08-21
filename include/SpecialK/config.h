@@ -996,8 +996,8 @@ struct sk_config_t
     } cache;
 
     bool highlight_debug_tex       =  true;
-    bool on_demand_dump            = false;
-    bool d3d9_mod                  = false; // Causing compat issues in some D3D9Ex games ATM
+    bool on_demand_dump            =  true;
+    bool d3d9_mod                  =  true; // Causing compat issues in some D3D9Ex games ATM
     bool dump_on_load              = false;
     bool clamp_lod_bias            = false;
   } textures;

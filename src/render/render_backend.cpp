@@ -276,7 +276,7 @@ SK_BootD3D9 (void)
     SK::D3D9::TextureManager& tex_mgr =
       SK_D3D9_GetTextureManager ();
 
-    if (config.textures.d3d9_mod)
+    if (true)
     {
       tex_mgr.Init ();
     }
@@ -293,7 +293,7 @@ SK_BootD3D9 (void)
                               SK_LoadEarlyImports32 () );
     }
 
-    if ( config.textures.d3d9_mod ||
+    if ( true ||
          config.render.d3d9.force_d3d9ex )
     {
       tex_mgr.Hook ();

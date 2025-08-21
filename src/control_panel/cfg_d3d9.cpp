@@ -78,7 +78,7 @@ SK::ControlPanel::D3D9::Draw (void)
       OSD::DrawVideoCaptureOptions ();
     }
 
-    if (config.textures.d3d9_mod)
+    if (true)
     {
     ImGui::TreePush ("");
     if (ImGui::CollapsingHeader ("Texture Memory Stats", ImGuiTreeNodeFlags_DefaultOpen))
